@@ -1,0 +1,11 @@
+<%= form_for @changeset, Routes.post_path(@conn, :update, @post), fn f -> %>
+  <label>
+    Term: <%= text_input f, :term %>
+  </label>
+
+  <label>
+    Description: <%= textarea f, :description %>
+  </label>
+
+  <%= submit "Submit" %>
+<% end %>

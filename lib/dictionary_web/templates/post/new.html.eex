@@ -1,0 +1,11 @@
+<%= form_for @post, Routes.post_path(@conn, :create), fn f -> %>
+  <label>
+    Term: <%= text_input f, :term %>
+  </label>
+
+  <label>
+    Description: <%= textarea f, :description %>
+  </label>
+
+  <%= submit "Submit" %>
+<% end %>

@@ -16,11 +16,7 @@ defmodule DictionaryWeb.Router do
   scope "/", DictionaryWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PostController, :index
+    resources "/posts", PostController
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", DictionaryWeb do
-  #   pipe_through :api
-  # end
 end
