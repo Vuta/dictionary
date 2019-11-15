@@ -32,5 +32,19 @@ defmodule Dictionary.Post do
     post
     |> cast(attrs, [:term, :description])
     |> validate_required([:term, :description])
+    |> strip_unsafe_body(attrs)
   end
+
+  defp strip_unsafe_body(post, %{"description" => nil}), do: post
+
+  defp strip_unsafe_body(post, %{"description" => description}) do
+    body =
+      description
+      |> Phoenix.HTML.html_escape()
+      |> Phoenix.HTML.safe_to_string()
+
+    put_change(post, :description, body)
+  end
+
+  defp strip_unsafe_body(post, _), do: post
 end

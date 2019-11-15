@@ -1,0 +1,20 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <label>
+    Term: <%= text_input f, :term %>
+  </label>
+
+  <label>
+    Description:
+    <%= textarea f, :description, class: "invisible", id: "description" %>
+  </label>
+
+  <%= submit "Submit" %>
+<% end %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+  var simplemde = new SimpleMDE({
+      element: document.getElementById("description")
+  })
+</script>

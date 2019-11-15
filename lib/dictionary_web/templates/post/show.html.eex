@@ -1,2 +1,4 @@
-<h3><%= @post.term %></h3>
-<p><%= @post.description %></p>
+<h1><%= @post.term %></h1>
+<div>
+  <%= markdown(@post.description) %>
+</div>
