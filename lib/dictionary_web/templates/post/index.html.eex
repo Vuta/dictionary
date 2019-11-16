@@ -1,1 +1,7 @@
 <h1>Welcome readers!</h1>
+
+<%= for post <- @posts do %>
+  <div>
+    <%= link(post.term, to: Routes.post_path(@conn, :show, post.id)) %>
+  </div>
+<% end %>

@@ -4,7 +4,9 @@ defmodule DictionaryWeb.PostController do
   alias Dictionary.Post
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    posts = Post.all_id_and_term()
+
+    render(conn, "index.html", posts: posts)
   end
 
   def new(conn, _params) do

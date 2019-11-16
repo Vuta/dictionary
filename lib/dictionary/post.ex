@@ -2,6 +2,7 @@ defmodule Dictionary.Post do
   use Ecto.Schema
 
   import Ecto.Changeset
+  import Ecto.Query
 
   alias Dictionary.Repo
 
@@ -10,6 +11,12 @@ defmodule Dictionary.Post do
     field :description, :string
 
     timestamps()
+  end
+
+  def all_id_and_term() do
+    query = from p in __MODULE__, order_by: p.term, select: [:id, :term]
+
+    Repo.all(query)
   end
 
   def find(id) do
